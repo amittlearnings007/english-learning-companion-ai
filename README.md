@@ -67,7 +67,7 @@ Start both services together with the lifecycle-safe launcher:
 ./run.sh
 ```
 
-It prints the UI and API URLs and stops both child processes together when you press `Ctrl+C`. This is the recommended way to avoid a browser tab outliving its Streamlit server.
+It waits for both services, opens the UI in Chrome, prints the UI and API URLs, and stops both child processes together when you press `Ctrl+C`. If `8000` or `8501` is already occupied, it automatically chooses the next free local port and passes the selected API URL into Streamlit. This makes repeated launches safe even when an older browser session is still open.
 
 For separate terminals, start the backend:
 
