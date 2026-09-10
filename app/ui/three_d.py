@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-import streamlit.components.v1 as components
+from urllib.parse import quote
+
+import streamlit as st
 
 
 SCENE_HTML = """
@@ -117,4 +119,8 @@ SCENE_HTML = """
 
 
 def render_word_world() -> None:
-    components.html(SCENE_HTML, height=280, scrolling=False)
+  st.iframe(
+    f"data:text/html;charset=utf-8,{quote(SCENE_HTML)}",
+    width="stretch",
+    height=280,
+  )
