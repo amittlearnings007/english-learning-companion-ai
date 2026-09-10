@@ -14,16 +14,30 @@ SCENE_HTML = """
     #world { width: 100%; height: 100%; position: relative; }
     .hint { position: absolute; left: 14px; bottom: 12px; z-index: 2; color: #28536c; background: rgba(255,255,255,.82); border-radius: 999px; padding: 5px 10px; font: 700 12px Nunito, sans-serif; }
     .label { position: absolute; right: 14px; top: 12px; z-index: 2; color: #136b5a; background: rgba(255,255,255,.84); border-radius: 10px; padding: 7px 10px; font: 800 12px Nunito, sans-serif; }
+    .fallback-world { display: none; height: 100%; align-items: center; justify-content: center; gap: 22px; perspective: 700px; transform-style: preserve-3d; }
+    .fallback-shape { display: grid; place-items: center; width: 64px; height: 64px; color: #17324d; font: 800 11px Nunito, sans-serif; cursor: pointer; box-shadow: 0 12px 18px rgba(33, 75, 93, .18); transform-style: preserve-3d; animation: bob 2.4s ease-in-out infinite; }
+    .fallback-shape:nth-child(2) { animation-delay: -.7s; }
+    .fallback-shape:nth-child(3) { animation-delay: -1.4s; }
+    .fallback-shape:nth-child(4) { animation-delay: -2s; }
+    .fallback-red { background: #ef7d6b; border-radius: 50%; }
+    .fallback-blue { background: #64b8e8; border-radius: 12px; transform: rotateX(15deg) rotateY(-22deg); }
+    .fallback-ball { background: #ffd75a; border-radius: 50%; transform: rotateX(35deg) rotateY(30deg); }
+    .fallback-play { background: #78c39c; border-radius: 16px; transform: rotateX(-18deg) rotateY(24deg); }
+    @keyframes bob { 0%, 100% { translate: 0 5px; } 50% { translate: 0 -8px; } }
   </style>
 </head>
 <body>
-  <div id="world"><div class="label" id="label">Tap a shape</div><div class="hint">Drag to spin the word world</div></div>
+  <div id="world"><div class="label" id="label">Tap a shape</div><div class="hint">Drag to spin the word world</div><div class="fallback-world" id="fallback"><div class="fallback-shape fallback-red" data-word="red">RED</div><div class="fallback-shape fallback-blue" data-word="blue">BLUE</div><div class="fallback-shape fallback-ball" data-word="ball">BALL</div><div class="fallback-shape fallback-play" data-word="play">PLAY</div></div></div>
   <script src="https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.min.js"></script>
   <script>
     const mount = document.getElementById('world');
     const label = document.getElementById('label');
     if (!window.THREE) {
-      label.textContent = '3D world needs an internet connection';
+      label.textContent = 'Tap a word';
+      document.getElementById('fallback').style.display = 'flex';
+      document.querySelectorAll('.fallback-shape').forEach((shape) => {
+        shape.addEventListener('click', () => { label.textContent = `Say ${shape.dataset.word}!`; });
+      });
     } else {
     const THREE = window.THREE;
     const scene = new THREE.Scene();
