@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+.streamlit/secrets.toml
+data/*.db
+logs/*.log
+.env
+.venv/
+vocabulary.db
+.playwright-mcp/
+lingo-*.png
+venv/

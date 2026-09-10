@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ -x ".venv/bin/python" ]]; then
+  .venv/bin/python scripts/validate_utf8_files.py
+else
+  python3 scripts/validate_utf8_files.py
+fi

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lingo | Speak with confidence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">L</span><span>Lingo</span></div>
+      <div class="profile-card">
+        <div class="avatar">AM</div>
+        <div><strong>Amit</strong><span>Intermediate learner</span></div>
+        <button class="icon-button" aria-label="Open profile">•••</button>
+      </div>
+      <nav class="nav-list" aria-label="Primary navigation">
+        <button class="nav-item active"><span class="nav-icon">◒</span>Practice <span class="nav-count">1</span></button>
+        <button class="nav-item" id="vocabNav"><span class="nav-icon">▤</span>Vocabulary <span class="nav-count light" id="vocabCount">3</span></button>
+        <button class="nav-item"><span class="nav-icon">◷</span>Progress</button>
+      </nav>
+      <div class="sidebar-footer"><div class="streak-icon">✦</div><div><strong>4 day streak</strong><span>Keep the rhythm going</span></div></div>
+    </aside>
+
+    <section class="workspace">
+      <header class="topbar"><div><p class="eyebrow">Practice room / English</p><h1>Everyday conversation</h1></div><div class="top-actions"><button class="text-button" id="clearButton">Clear chat</button><button class="avatar small">AM</button></div></header>
+      <div class="learning-strip"><div class="level-dot"></div><div><strong>Intermediate mode</strong><span>Natural conversation with gentle corrections</span></div><button class="strip-action">Change level <span>›</span></button></div>
+
+      <div class="conversation-layout">
+        <section class="chat-panel">
+          <div class="chat-scroll" id="chatScroll">
+            <div class="date-divider"><span>Today, September 10</span></div>
+            <div class="message-row assistant-row"><div class="mini-avatar">L</div><div class="message-group"><span class="message-author">Lingo <time>09:41</time></span><div class="bubble assistant-bubble">Hey Amit! Let’s warm up with something easy. <strong>What was the best part of your day?</strong></div></div></div>
+            <div class="message-row user-row"><div class="message-group"><span class="message-author">You <time>09:42</time></span><div class="bubble user-bubble">I am agree that the weather was really nice today.</div></div></div>
+            <div class="correction-card"><div class="correction-heading"><span class="check-icon">✓</span><strong>Small correction</strong><span class="correction-label">1 of 1 this turn</span></div><div class="correction-body"><div><span class="muted-label">Try this</span><p><del>I am agree</del> <span class="arrow">→</span> <strong>I agree</strong></p></div><div class="why"><span class="muted-label">Why?</span><p>Use the verb <strong>agree</strong> directly.</p></div></div></div>
+            <div class="message-row assistant-row"><div class="mini-avatar">L</div><div class="message-group"><span class="message-author">Lingo <time>09:42</time></span><div class="bubble assistant-bubble">That sounds lovely. Did you spend the day outside?</div><div class="vocab-suggestion"><span class="sparkle">✦</span><span><strong>lovely</strong><small>pleasant or beautiful</small></span><button class="add-word" data-word="lovely">+ Add</button></div></div></div>
+          </div>
+          <form class="composer" id="composer"><div class="input-wrap"><textarea id="messageInput" rows="1" placeholder="Write in English..." aria-label="Message"></textarea><button type="button" class="mic-button" id="micButton" aria-label="Use voice input">⌕</button></div><div class="composer-footer"><span>One correction per turn <span class="info">i</span></span><button class="send-button" type="submit" aria-label="Send message">↑</button></div></form>
+        </section>
+
+        <aside class="vocab-panel"><div class="vocab-header"><div><p class="eyebrow">Your collection</p><h2>Vocabulary</h2></div><button class="icon-button plus-button" id="addVocabButton" aria-label="Add vocabulary">+</button></div><div class="vocab-progress"><div><span>12 words this week</span><strong>68%</strong></div><div class="progress-track"><div></div></div></div><div class="word-list" id="wordList"></div><button class="view-all" id="viewAllButton">View all words <span>→</span></button><div class="tip-card"><div class="tip-art">Aa</div><div><strong>Make it stick</strong><p>Use a new word in your next message to remember it faster.</p></div></div></aside>
+      </div>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

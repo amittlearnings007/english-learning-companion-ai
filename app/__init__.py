@@ -1,0 +1,1 @@
+"""English Learning Companion AI application package."""
